@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63502D0B1EC2B48900CBBD85 /* YQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63502D0A1EC2B48900CBBD85 /* YQL.swift */; };
+		63502D0D1EC2BFF400CBBD85 /* listOfCurrencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63502D0C1EC2BFF400CBBD85 /* listOfCurrencies.swift */; };
 		71881FEE1EBEAE24000FC097 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71881FED1EBEAE24000FC097 /* AppDelegate.swift */; };
 		71881FF01EBEAE24000FC097 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71881FEF1EBEAE24000FC097 /* ViewController.swift */; };
 		71881FF31EBEAE24000FC097 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71881FF11EBEAE24000FC097 /* Main.storyboard */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		63502D0A1EC2B48900CBBD85 /* YQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQL.swift; sourceTree = "<group>"; };
+		63502D0C1EC2BFF400CBBD85 /* listOfCurrencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = listOfCurrencies.swift; sourceTree = "<group>"; };
 		71881FEA1EBEAE24000FC097 /* CurrencyExchange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyExchange.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71881FED1EBEAE24000FC097 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71881FEF1EBEAE24000FC097 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +64,8 @@
 				71881FF41EBEAE24000FC097 /* Assets.xcassets */,
 				71881FF61EBEAE24000FC097 /* LaunchScreen.storyboard */,
 				71881FF91EBEAE24000FC097 /* Info.plist */,
+				63502D0A1EC2B48900CBBD85 /* YQL.swift */,
+				63502D0C1EC2BFF400CBBD85 /* listOfCurrencies.swift */,
 			);
 			path = CurrencyExchange;
 			sourceTree = "<group>";
@@ -137,7 +143,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				71881FF01EBEAE24000FC097 /* ViewController.swift in Sources */,
+				63502D0D1EC2BFF400CBBD85 /* listOfCurrencies.swift in Sources */,
 				71881FEE1EBEAE24000FC097 /* AppDelegate.swift in Sources */,
+				63502D0B1EC2B48900CBBD85 /* YQL.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +309,7 @@
 				71881FFE1EBEAE24000FC097 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
