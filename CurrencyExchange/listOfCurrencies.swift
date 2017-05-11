@@ -13,6 +13,7 @@ import UIKit
 class listOfCurrencies: UITableViewController {
     
     var currencyList: [String] = []
+    var selectedCurrencies: [String] = []
     
     override func viewDidLoad() {
         
@@ -31,4 +32,9 @@ class listOfCurrencies: UITableViewController {
         
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
 }
