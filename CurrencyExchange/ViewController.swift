@@ -6,6 +6,36 @@
 //  Copyright © 2017 Juan Aguillon. All rights reserved.
 //
 
+extension String {
+
+func currencyInputFormatting() -> String {
+    
+    var number: NSNumber!
+    let formatter = NumberFormatter()
+    formatter.numberStyle = .currencyAccounting
+    formatter.currencySymbol = "$"
+    formatter.maximumFractionDigits = 2
+    formatter.minimumFractionDigits = 2
+    
+    var amountWithPrefix = self
+    
+    // remove from String: "$", ".", ","
+    let regex = try! NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive)
+    amountWithPrefix = regex.stringByReplacingMatches(in: amountWithPrefix, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.characters.count), withTemplate: "")
+    
+    let double = (amountWithPrefix as NSString).doubleValue
+    number = NSNumber(value: (double / 100))
+    
+    // if first number is 0 or all numbers were deleted
+    guard number != 0 as NSNumber else {
+        return ""
+    }
+    
+    return formatter.string(from: number)!
+}
+    
+}
+
 import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITextFieldDelegate, UIScrollViewAccessibilityDelegate {
@@ -17,12 +47,29 @@ class ViewController: UIViewController, UITableViewDelegate, UITextFieldDelegate
   
     @IBOutlet weak var initialForeignLabel: UILabel!
     @IBOutlet weak var currencyInput: UITextField!
+    @IBOutlet weak var convertionResults: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         initialHomeLabel.text = initialHome[0]
         initialForeignLabel.text = initialForeign[0]
+        convertionResults.isHidden = true
+        
+        func mycurrency(_ textField: UITextField) {
+            
+            if let amountString1 = currencyInput.text?.currencyInputFormatting() {
+                currencyInput.text = amountString1
+            }
+        }
+        
+        
+    }
+    
+    
+    @IBAction func refreshView(_ sender: UIButton) {
+        
+        //viewDidLoad()
     }
     
     
@@ -36,27 +83,36 @@ class ViewController: UIViewController, UITableViewDelegate, UITextFieldDelegate
     
     @IBAction func Convert(_ sender: UIButton) {
         
-        //var rate : Double
+        convertionResults.isHidden = false
+        
+        let amount = Double(currencyInput.text!)
+        
         
         let myYQL = YQL()
         let queryString = "select * from yahoo.finance.xchange where pair in (\"USDMXN\")"
         
-        // Network session is asyncronous so use a closure to act upon data once data is returned
+        
+        // This code was provided by the instructor
         myYQL.query(queryString) { jsonDict in
-            // With the resulting jsonDict, pull values out
-            // jsonDict["query"] results in an Any? object
-            // to extract data, cast to a new dictionary (or other data type)
-            // repeat this process to pull out more specific information
+            
             let queryDict = jsonDict["query"] as! [String: Any]
             print(queryDict["count"]!)
             print(queryDict["results"]!)
             
             let results = queryDict["results"] as! [String: Any]
             let rate = results["rate"] as! [String: Any]
-            let test = rate["Rate"] as! String
+            let unitRate = rate["Rate"] as! String
+            let calculation = Double(unitRate)! * amount!
+            
+            DispatchQueue.main.async() {
+                self.convertionResults.text="Foreign Currency $\(calculation)"
+            }
+            
+            
             print(rate)
             
-            print(test)
+            print(unitRate)
+            print(calculation)
         }
         
     }
