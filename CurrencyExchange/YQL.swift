@@ -11,7 +11,7 @@
 import Foundation
 
 class YQL {
-    private let QUERY_PREFIX = "http://query.yahooapis.com/v1/public/yql?q="
+    private let QUERY_PREFIX = "https://query.yahooapis.com/v1/public/yql?q="
     private let QUERY_SUFFIX = "&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback="
     
     public func query(_ statement:String, completion: @escaping ([String: Any]) -> Void) {

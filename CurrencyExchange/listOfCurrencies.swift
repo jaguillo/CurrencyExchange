@@ -35,7 +35,6 @@ class listOfCurrencies: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var selectedItem = indexPath
-        
         if let cell = tableView.cellForRow(at: indexPath) {
             
             if cell.accessoryType == .checkmark
@@ -55,6 +54,7 @@ class listOfCurrencies: UITableViewController {
         
         print(selectedItem.row)
         print(selectedCurrencies)
+        print(selectedCurrencies.count)
     }
     
 }
