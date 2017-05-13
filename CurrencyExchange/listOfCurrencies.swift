@@ -34,7 +34,27 @@ class listOfCurrencies: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var selectedItem = indexPath
         
+        if let cell = tableView.cellForRow(at: indexPath) {
+            
+            if cell.accessoryType == .checkmark
+            {
+                cell.accessoryType = .none
+                
+                self.selectedCurrencies.remove(at: indexPath.row)
+                
+            }
+            else
+            {
+                cell.accessoryType = .checkmark
+                self.selectedCurrencies.append(cell.reuseIdentifier!)
+            }
+        }
+        
+        
+        print(selectedItem.row)
+        print(selectedCurrencies)
     }
     
 }
